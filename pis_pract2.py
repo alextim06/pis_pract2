@@ -56,3 +56,9 @@ class ManagerLesson():
     def ShowManage(self):
         for lesson in self.lessons:
             print(lesson.__str__())
+
+
+manager1 = ManagerLesson()
+
+manager1.ManageLessons()
+manager1.ShowManage()
