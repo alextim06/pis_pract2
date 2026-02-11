@@ -52,3 +52,7 @@ class ManagerLesson():
                     lesson = Lesson(date, auditorium, teacher, lesson_type)
                 
                 self.lessons.append(lesson)
+    
+    def ShowManage(self):
+        for lesson in self.lessons:
+            print(lesson.__str__())
