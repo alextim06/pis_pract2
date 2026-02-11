@@ -27,3 +27,28 @@ class Practice(Lesson):
     def __str__(self):
         base_str = super().__str__()
         return f'{base_str}, Кол-во задач: {self.task_count}'
+
+class ManagerLesson():
+    def __init__(self):
+        self.lessons = []
+
+    def ManageLessons(self):
+        with open('date_prac1.txt', 'r', encoding='utf-8') as f:
+            for line in f.readlines():
+                parts = line.split('"')
+                date = parts[0].strip()
+                auditorium = parts[1]
+                teacher= parts[3]
+                lesson_type = parts[5]
+                
+                if lesson_type == 'Лекция':
+                    topic = parts[7]
+                    students_count = int(parts[9])
+                    lesson = Lecture(date, auditorium, teacher, lesson_type, topic, students_count)
+                elif lesson_type == 'Практика':
+                    task_count = int(parts[7])
+                    lesson = Practice(date, auditorium, teacher, lesson_type, task_count)
+                else:
+                    lesson = Lesson(date, auditorium, teacher, lesson_type)
+                
+                self.lessons.append(lesson)
